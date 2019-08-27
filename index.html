@@ -4,28 +4,63 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="reset.css" rel="stylesheet" type="text/css" />
+  <link href="index.css" rel="stylesheet" type="text/css" />
+
   <title>Document</title>
 </head>
+
 <body>
   <header>
-    <h1>My Bookmarks Manager</h1>
+    <h1>My Bookmark Manager</h1>
     <form>
         <label for='filter'>Filter by rating: </label>
         <select id='filter' name='filter'>
           <option value="all">ALL</option>
-          <option value=1>1</option>
-          <option value=2>2</option>
-          <option value=3>3</option>
-          <option value=4>4</option>
-          <option value=5>5</option>
-        </select>
+          <option value=1>1+</option>
+          <option value=2>2+</option>
+          <option value=3>3+</option>
+          <option value=4>4+</option>
+          <option value=5>5+</option>
+        </select> 
     </form>
-
   </header>
   <main>
+    <div id='addNewBookmark'>
+      <header><h2>Add A New Bookmark<span class='arrowpointers'>&#9662; &#9652;</span></h2></header>
+      <form>
+        <label for='newSiteName' class='vertAlignBottom'>Site Name: </label>
+        <input type='text' id='newSiteName' class='vertAlignBottom' name='newSiteName' placeholder='Name of website' required />
+        <br/>
 
+        <label for='newSiteUrl' class='vertAlignBottom'>Site Link:</label>
+        <input type='text' id='newSiteUrl' class='vertAlignBottom' name='newSiteUrl' placeholder='ex: https://...' required />
+        <br/>
+
+        <p  class='vertAlignBottom'>Rating: 
+          <input type='radio' id='option1' value='false' name='stars' />
+          <label for='option1' class='vertAlignBottom'>1</label>
+          <input type='radio' id='option2' value='false' name='stars' />
+          <label for='option2' class='vertAlignBottom'>2</label>
+          <input type='radio' id='option3' value='false' name='stars' />
+          <label for='option3' class='vertAlignBottom'>3</label>
+          <input type='radio' id='option4' value='false' name='stars' />
+          <label for='option4' class='vertAlignBottom'>4</label>
+          <input type='radio' id='option5' value='false' name='stars' />
+          <label for='option5' class='vertAlignBottom'>5</label>
+        </p>
+    
+        <label for='newSiteNotes'>My Notes: </label>
+        <textarea rows="4" maxlength='240' id='newSiteNotes' name='newSiteNotes' placeholder='write your notes about this site here'></textarea>
+        <br/>
+        
+        <button>Cancel</button>
+        <button type='submit'>Save</button>
+      </form>
+    </div>
+    <p id='infoLine'></p>
   </main>
-  
+
   <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js'></script>
   <script type="text/javascript" src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
   <script type="text/javascript" src='store.js'></script>
