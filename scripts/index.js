@@ -33,6 +33,7 @@ function handleExpansionClicked() {
 function main() {
   handleAdderClicked();
   handleExpansionClicked();
+  bookmarks.handleNewBookmarkSubmit();
 }
 
 $(main);

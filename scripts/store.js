@@ -1,44 +1,48 @@
 'use strict';
-/* global cuid */
+/* global  */
 // eslint-disable-next-line no-unused-vars
 
+//this is for manipulating the data
 const store = (function() {
 
   let adding = false;
 
-  const list = [
-      {
-      id: 1,
-      title: 'Bookmark1',
-      rating: 5,
-      url: 'www.xyz.com',
-      description: 'stuff and more stuff and blah, blah',
-      expanded: false,
-      editing: false
-    }
-   ];
+  const list = [];
 
-    function createId(bookmark) {
-    bookmark['id'] = cuid();
-  };
+  function addBookmark(bookmark) {
+    const _bookmark = Object.assign(bookmark, {
+      expanded: false
+    });
+    this.list.push(_bookmark);
+  }
 
   function findById(id) {
-  //
-  };
+    return this.list.find(bmk => bmk.id === id);
+  }
+   
+  function toggleBookmarkExpand(id) {
+    const bookmark = this.findById(id);
+    bookmark.expanded = !bookmark.expanded;
+  }
+
+  function deleteBookmark(id) {
     
-  function filterByRating(rating) {
-  //
-  };
+  }
+/*
+  function updateBookmark(id, updatedData) {
+    const bookmark = this.findById(id);
+    Object.assign(bookmark, updatedData);
+  }  */
     
+
   return {
-    list:[],
+    list,
     adding,
-
-    createId,
+    addBookmark,
+    toggleBookmarkExpand,
     findById,
-    // filterByRating,
+    //updateBookmark
   };
-
 
 }());
 

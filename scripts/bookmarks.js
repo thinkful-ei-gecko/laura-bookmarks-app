@@ -1,18 +1,33 @@
 'use strict';
+/* global store api $*/
 
 const bookmarks = (function() {
 
   function handleNewBookmarkSubmit() {
-    //take in the data submitted in the form
-    //call the function to add data to the store
-    //call the function to POST the data
-    //close the submit form
+    $('#inputForm').on('submit', function(event){
+      event.preventDefault();
+      const newEntry = {
+        title: $('#newSiteName').val(),
+        url: $('#newSiteUrl').val(),
+        rating: $('input[type=radio][name=stars]:checked').val(),
+        description: $('#newSiteNotes').val()
+      };
+      api.createNewBookmark(newEntry)
+        .then(response => {
+          store.addBookmark(response);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    });
   }
 
   function handleDeleteClicked() {
-    //on click of delete button
+    $('#viewBookarks').on('click', '#delete', function() {
     //remove the item from the store
-    //call the api function to DELETE
+
+      api.deleteBookmark(id);
+    });
   }
 
   //generate HTML for bookmark entry display
@@ -28,8 +43,8 @@ const bookmarks = (function() {
         <br/>
         <p><span class='vertAlignBottom labeler'>My Notes: </span>${bookmark.description}</p>
         <br/>
-        <button class='edit'>Edit</button>
-        <button class='delete'>Delete</button>
+    // <button class='edit'>Edit</button>
+        <button id='delete'>Delete</button>
       </div></div>`;
 
     return singleEntry;
@@ -45,8 +60,10 @@ const bookmarks = (function() {
   }
 
 
-return {
-  render
-};
+  return {
+    render,
+    handleNewBookmarkSubmit,
+
+  };
 
 }());  

@@ -3,9 +3,9 @@
 const api = (function(){
   const BASE_URL = 'https://thinkful-list-api.herokuapp.com/ljelias';
 
-  const doApiFetch = function(...args) {
+  const doApiFetch = function(url, parameters) {
     let error;
-    return fetch(...args)
+    return fetch(url, parameters)
       .then(response => {
         if(!response.ok) {
           error = response.statusText;
@@ -32,7 +32,7 @@ const api = (function(){
   };
 
   const createNewBookmark = function(bookmarkInfoObject) {
-    const newBookmark = JSON.stringify({ bookmarkInfoObject });
+    const newBookmark = JSON.stringify(bookmarkInfoObject);
     return doApiFetch(BASE_URL + '/bookmarks', 
       {
         method: 'POST',
