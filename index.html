@@ -12,7 +12,7 @@
 
 <body>
   <header id='top-header'>
-    <h1>My Bookmark Manager</h1>
+      <h1>My Bookmark Manager</h1>
       <form id='filterForm'>
         <label for='filter'>Filter by rating: </label>
         <select id='filter' name='filter'>
@@ -24,62 +24,52 @@
           <option value=5>5+</option>
         </select> 
       </form>
+      <div id='addNewBookmark'>
+          <header id='addingHead' class='boxHeader'><h2><span id='addingTitle' class='italicspan'>Click here to add a new bookmark </span><span class='arrowpointers'> &#9662;&#9652;</span></h2></header>
+          <div id='viewFormExpanded'>
+           <form id='inputForm'>
+            <label for='newSiteName' class='vertAlignBottom labeler'>Site Name: </label>
+            <input type='text' id='newSiteName' class='vertAlignBottom' name='newSiteName' placeholder='Name of website' required />
+            <br/>
+    
+            <label for='newSiteUrl' class='vertAlignBottom labeler'>Site Link:</label>
+            <input type='text' id='newSiteUrl' class='vertAlignBottom' name='newSiteUrl' placeholder='ex: https://...' required />
+            <br/>
+    
+            <p class='vertAlignBottom labeler'>Rating: 
+              <input type='radio' id='option1' value='false' name='stars' />
+              <label for='option1' class='vertAlignBottom'>1</label>
+              <input type='radio' id='option2' value='false' name='stars' />
+              <label for='option2' class='vertAlignBottom'>2</label>
+              <input type='radio' id='option3' value='false' name='stars' />
+              <label for='option3' class='vertAlignBottom'>3</label>
+              <input type='radio' id='option4' value='false' name='stars' />
+              <label for='option4' class='vertAlignBottom'>4</label>
+              <input type='radio' id='option5' value='false' name='stars' />
+              <label for='option5' class='vertAlignBottom'>5</label>
+            </p>
+        
+            <label for='newSiteNotes' class='labeler'>My Notes: </label>
+            <textarea rows="4" maxlength='240' id='newSiteNotes' name='newSiteNotes' placeholder='write your notes about this site here'></textarea>
+            <br/>
+            
+            <button type='submit'>Save</button>
+            <button>Cancel</button>
+           </form>
+          </div>
+        </div>
+
   </header>
   <main>
-    <div id='addNewBookmark'>
-      <header class='boxHeader'><h2><span class='italicspan'>(Click here to) Add a new bookmark</span><span class='arrowpointers'> &#9662;&#9652;</span></h2></header>
-      <form id='inputForm'>
-        <label for='newSiteName' class='vertAlignBottom labeler'>Site Name: </label>
-        <input type='text' id='newSiteName' class='vertAlignBottom' name='newSiteName' placeholder='Name of website' required />
-        <br/>
-
-        <label for='newSiteUrl' class='vertAlignBottom labeler'>Site Link:</label>
-        <input type='text' id='newSiteUrl' class='vertAlignBottom' name='newSiteUrl' placeholder='ex: https://...' required />
-        <br/>
-
-        <p  class='vertAlignBottom labeler'>Rating: 
-          <input type='radio' id='option1' value='false' name='stars' />
-          <label for='option1' class='vertAlignBottom'>1</label>
-          <input type='radio' id='option2' value='false' name='stars' />
-          <label for='option2' class='vertAlignBottom'>2</label>
-          <input type='radio' id='option3' value='false' name='stars' />
-          <label for='option3' class='vertAlignBottom'>3</label>
-          <input type='radio' id='option4' value='false' name='stars' />
-          <label for='option4' class='vertAlignBottom'>4</label>
-          <input type='radio' id='option5' value='false' name='stars' />
-          <label for='option5' class='vertAlignBottom'>5</label>
-        </p>
-    
-        <label for='newSiteNotes' class='labeler'>My Notes: </label>
-        <textarea rows="4" maxlength='240' id='newSiteNotes' name='newSiteNotes' placeholder='write your notes about this site here'></textarea>
-        <br/>
-        
-        <button type='submit'>Save</button>
-        <button>Cancel</button>
-      </form>
-    </div>
-    <p> --</p>
     <p id='infoLine'>
       There are currently no bookmarks.<br/>
       OR: Your current bookmarks:
     </p>
-    <p> --</p>
 
-    <div id='viewBookmark'>
-      <header class='boxHeader'><h3>Bookmark1 <span class='stars'> &#9733; &#9733; &#9733;</span><span class='arrowpointers'> &#9662;&#9652;</span></h3></header>
-        <div class='viewBookmarkExpanded'>
-          <span class='vertAlignBottom labeler'>Visit Site: </span>
-          <a href='https://www.xyz.com' class='siteUrl vertAlignBottom' target='_blank'>https://www.xyz.com</a>
-          <br/>
-        
-          <p><span  class='vertAlignBottom labeler'>My Notes: </span>some notes and stuff and some notes and stuff and some notes and stuff and some notes and stuff and some notes and stuff and some notes and stuff and </p>
-          <br/>
-          
-          <button>Edit</button>
-          <button>Delete</button>
-        </div>
+    <div id='viewBookmarks'>
     </div>
-    <p> --</p>
+
+<!-- This is mockup layout for future editing feature to be generated by JS functions
 
     <div id='editBookmark'>
         <header class='boxHeader'><h3>Bookmark1 <span class='stars'> &#9733; &#9733; &#9733;</span><span class='arrowpointers'> &#9662;&#9652;</span></h3></header>
@@ -100,8 +90,7 @@
           <button>Cancel</button><span class='editingStatus'>Editing...</span>
         </form>
       </div>
-      <p> --</p>
-      <p> --</p>
+-->
 
   </main>
 

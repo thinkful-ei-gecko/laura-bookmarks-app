@@ -27,17 +27,32 @@ h1 {
   text-align: right;
 }
 
-#addNewBookmark,
-#viewBookmark,
+#addNewBookmark {
+  width: 100%;
+  margin: 12px auto;
+  border: 4px solid grey;
+}
+
+#viewBookmarks,
 #editBookmark {
   width: 70%;
-  margin: 6px auto;
+  margin: 12px auto;
   border: 4px solid grey;
+}
+
+.viewBookmarkExpanded {
+  display: none;
+}
+
+#viewFormExpanded {
+  display: none;
 }
 
 #infoLine {
   width: 70%;
+  background-color: rgb(255, 207, 188); 
   margin: 6px auto;
+  padding: 6px 12px;
 }
 .italicspan {
   font-style: italic;
@@ -47,11 +62,14 @@ h2, h3 {
   font-size: 1.7rem;
   border-bottom: 1px solid black;
   background-color: lightgray;
+  position: relative;
 }
 
 .arrowpointers {
   font-size: 3rem;
   line-height: 1.7rem;
+  position: absolute;
+  right: 0;
 }
 
 .stars {
