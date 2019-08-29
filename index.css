@@ -54,15 +54,21 @@ h1 {
   margin: 6px auto;
   padding: 6px 12px;
 }
+
 .italicspan {
   font-style: italic;
 }
 
 h2, h3 {
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   border-bottom: 1px solid black;
   background-color: lightgray;
   position: relative;
+  padding: 9px;
+}
+
+.stars {
+  margin-left: 12%;
 }
 
 .arrowpointers {
