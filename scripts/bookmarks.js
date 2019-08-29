@@ -90,27 +90,15 @@ const bookmarks = (function() {
   function handleFilterResults(){
     $('#filterForm').on('click', function(event){
       event.preventDefault();
-      let filteredList;
-      if(this.val === 'all' || this.val === 1){filteredList = store.list}
-      else if(this.val === 5){
-        filteredList = 5;
-      }
-      else if(this.val === 4){
-        filteredList = 4;
-      }
-      else if(this.val === 3){
-        filteredList = 3;
-      }
-      else if(this.val === 2){
-        filteredList = 2;
-      }
+      let filteredValue = this.val();
     });
-    render(filteredList);
+    render(filteredValue);
   }
 
-  function render() {
-    let items = store.list;
-    let htmlString = items.map((item) => buildSingleEntryHtml(item));
+  function render(filteredValue = 1) {
+    let bookmarks = store.list;
+    let filteredItems = bookmarks.filter(bmk => bmk.rating >= filteredValue);
+    let htmlString = filteredItems.map((item) => buildSingleEntryHtml(item));
     let fullList = htmlString.join('');
     $('#viewBookmarks').html(fullList);
   }
@@ -121,7 +109,8 @@ const bookmarks = (function() {
     handleNewBookmarkSubmit,
     handleExpansionClicked,
     handleDeleteClicked,
-    handleAdderClicked
+    handleAdderClicked,
+    handleFilterResults
   };
 
 }());  
