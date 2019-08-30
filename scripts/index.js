@@ -10,9 +10,9 @@ function main() {
   });
   bookmarks.handleAdderClicked();
   bookmarks.handleAdderUnclicked();
-
-//  bookmarks.handleDeleteClicked();
+  bookmarks.handleDeleteClicked();
   bookmarks.handleExpansionClicked();
+  bookmarks.handleExpansionUnclicked();
   bookmarks.handleNewBookmarkSubmit();
   bookmarks.handleFilterResults();
 }

@@ -33,17 +33,34 @@ h1 {
   text-align: right;
 }
 
+h2 {
+  font-size: 1rem;
+  border-bottom: 1px solid black;
+  background-color: rgb(223, 231, 248);
+  position: relative;
+  padding: 9px;
+}
+
 .italicspan {
   font-style: italic;
 }
 
-#viewFormExpanded {
-  padding: 3px 12px;
+.addingHead:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#viewFormExpanded,
+.viewBookmarkExpanded {
+  padding: 6px 12px 12px 12px;
 }
 
 .formRow {
   margin-top: 9px;
   font-weight: 600;
+}
+
+.noBold {
+  font-weight: 400;
 }
 
 .vertAlignBottom {
@@ -59,16 +76,20 @@ input[type="radio"] {
   margin: 0 0 0 15px;
 }
 
-.addingHead:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.savebtn:hover {
+  background-color: rgb(78, 238, 45);
 }
 
 #infoLine {
   width: 96%;
   background-color: rgb(146, 177, 243);
   border: 3px solid rgb(188, 208, 252);
-  margin: 6px auto;
-  padding: 6px;
+  margin: 12px auto 6px auto;
+  padding: 3px 9px;
+}
+
+#viewBookmarks {
+  padding: 0 0 20px 0;
 }
 
 .singleBookmark,
@@ -89,18 +110,23 @@ input[type="radio"] {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-h2, h3 {
+h3 {
   font-size: 1rem;
   border-bottom: 1px solid black;
-  background-color: lightgray;
+  background-color: rgb(255, 254, 254);
   position: relative;
   padding: 9px;
 }
 
+h3:hover {
+  background-color: rgb(223, 231, 248);
+}
+
 .stars {
+  font-size: 1.3rem;
   text-align: right;
   color: rgb(216, 99, 53);
-  text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+  text-shadow: -2px 0 rgb(255, 255, 104), 0 2px rgb(255, 255, 104), 2px 0 rgb(255, 255, 104), 0 -2px rgb(255, 255, 104);
   position: absolute;
   right: 12%;
 }
@@ -110,6 +136,19 @@ h2, h3 {
   line-height: 1.7rem;
   position: absolute;
   right: 0;
+}
+
+.topRow {
+  position: relative;
+}
+
+.delete {
+  position: absolute;
+  right: 0;
+}
+
+.delete:hover {
+  background-color: red;
 }
 
 @media only screen and (min-width: 600px) {
@@ -128,6 +167,9 @@ h2, h3 {
   }
   h2, h3 {
     font-size: 1.3rem;
+  }
+  .stars {
+    font-size: 1.6rem;
   }
   .arrowpointers {
     font-size: 3rem;

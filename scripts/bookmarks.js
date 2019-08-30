@@ -3,22 +3,30 @@
 
 const bookmarks = (function(){
 
-  
   function handleExpansionClicked(){
     $('#viewBookmarks').on('click', 'header', function(event) {
       event.preventDefault();
-      let id = $('header').attr('identity');
-      console.log(id);
-      let item = store.list.id;
-      item.expanded = true;
+      let id = $(event.currentTarget).attr('id');
+      let index = store.list.findIndex(item=>item.id==id);
+      store.list[index].expanded = true;
+      render();
+    });
+  }
+
+  function handleExpansionUnclicked(){
+    $('#viewBookmarks').on('click', '.fullView', function(event) {
+      event.preventDefault();
+      let id = $(event.currentTarget).attr('id');
+      let index = store.list.findIndex(item=>item.id==id);
+      store.list[index].expanded = false;
       render();
     });
   }
 
   function handleDeleteClicked(){
-    $('#viewBookmarks').on('click', '#delete', function(event) {
+    $('#viewBookmarks').on('click', '.delete', function(event) {
       event.preventDefault();
-      let id = '???';
+      let id = $(event.currentTarget).attr('data-id');
       api.deleteBookmark(id)
         .then(() => {
           store.deleteBookmark(id);
@@ -82,7 +90,7 @@ const bookmarks = (function(){
         <label for='newSiteUrl' class='vertAlignBottom labeler'>Site Link: &nbsp;&nbsp;</label>
         <input type='text' id='newSiteUrl' class='vertAlignBottom' name='newSiteUrl' placeholder='ex: https://...' required />
         </p>
-        <p class='vertAlignBottom labeler formRow'>Rating: 
+        <p class='vertAlignBottom labeler formRow'>Rating: &nbsp;
           <input type='radio' id='option1' value='1' name='stars' />
           <label for='option1' class='vertAlignBottom'>1</label>
           <input type='radio' id='option2' value='2' name='stars' />
@@ -98,7 +106,7 @@ const bookmarks = (function(){
         <label for='newSiteNotes' class='labeler'>My Notes: </label>
         <textarea rows="4" maxlength='240' id='newSiteNotes' name='newSiteNotes' placeholder='write your notes about this site here'></textarea><br/>
         </p>
-        <button type='submit'>Save</button>
+        <button type='submit' class='savebtn'>Save</button>
        </form>
       </div>
     </div>`;
@@ -125,18 +133,18 @@ const bookmarks = (function(){
 
     if(bookmark.expanded) {
       return `<div class='singleBookmark'>
-      <header class='boxHeader' identity='${bookmark.id}'><h3>${bookmark.title}<span class='stars'>${ratingDisplay}</span>
+      <header class='boxHeader fullView' id='${bookmark.id}'><h3>${bookmark.title}<span class='stars'>${ratingDisplay}</span>
       <span class='arrowpointers'>${pointup}</span></h3></header>
         <div class='viewBookmarkExpanded'>
-          <span class='vertAlignBottom labeler'>Visit Site: </span>
-          <a href='${bookmark.url}' class='siteUrl vertAlignBottom' target='_blank'>${bookmark.url}</a><br/>
-          <p><span  class='vertAlignBottom labeler'>My Notes: </span>${bookmark.desc}</p><br/>
-          <button class='delete'>Delete</button>
+          <p class='formRow topRow'><span class='vertAlignBottom'>Visit Site: </span>
+          <a href='${bookmark.url}' class='siteUrl vertAlignBottom' target='_blank'>${bookmark.url}</a><button class='delete' data-id='${bookmark.id}'>Delete</button></p>
+          <p class='formRow'><span  class='vertAlignBottom'>My Notes: </span><span class='noBold'>${bookmark.desc}</span></p>
+          
         </div>
       </div>`;
     } else {
       return `<div class='singleBookmark'>
-      <header class='boxHeader' identity='${bookmark.id}'><h3>${bookmark.title}<span class='stars'>${ratingDisplay}</span>
+      <header class='boxHeader' id='${bookmark.id}'><h3>${bookmark.title}<span class='stars'>${ratingDisplay}</span>
       <span class='arrowpointers'>${pointdown}</span></h3></header>
       </div>`;
     }
@@ -168,6 +176,7 @@ const bookmarks = (function(){
     render,
     handleNewBookmarkSubmit,
     handleExpansionClicked,
+    handleExpansionUnclicked,
     handleDeleteClicked,
     handleAdderClicked,
     handleAdderUnclicked,
