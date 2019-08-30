@@ -5,7 +5,7 @@
 //this is for manipulating the data
 const store = (function() {
 
-  //let adding = false;
+  let adding = false;
 
   const list = [];
 
@@ -37,7 +37,7 @@ const store = (function() {
 
   return {
     list,
-    //adding,
+    adding,
     addBookmark,
     toggleBookmarkExpand,
     findById,

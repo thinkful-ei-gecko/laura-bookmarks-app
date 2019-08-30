@@ -1,13 +1,20 @@
 'use strict';
-/* global $*/
+/* global bookmarks api store $*/
 
 
 function main() {
-  bookmarks.render(),
-  bookmarks.handleAdderClicked(),
-  bookmarks.handleDeleteClicked(),
-  bookmarks.handleExpansionClicked(),
-  bookmarks.handleNewBookmarkSubmit()
+  bookmarks.displayAddingForm();
+  api.getBookmarks().then(bookmarkData => {
+    bookmarkData.forEach(item => store.addBookmark(item));
+    bookmarks.render();
+  });
+  bookmarks.handleAdderClicked();
+  bookmarks.handleAdderUnclicked();
+
+//  bookmarks.handleDeleteClicked();
+  bookmarks.handleExpansionClicked();
+  bookmarks.handleNewBookmarkSubmit();
+  bookmarks.handleFilterResults();
 }
 
 $(main);
